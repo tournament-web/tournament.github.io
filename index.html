@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Tournaments</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Gaming Tournaments</h1>
+
+    <button id="adminPanelButton">Admin Panel</button>
+    <button id="paymentsPageButton">Payments</button>
+
+    <div id="adminPasswordPopup" class="popup">
+        <div class="popup-content">
+            <h2>Enter Admin Password</h2>
+            <input type="password" id="adminPassword" placeholder="Password">
+            <button id="adminPasswordSubmit">Submit</button>
+        </div>
+    </div>
+
+    <div id="adminPanelPage" class="admin-panel">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li id="userData">USER DATA</li>
+            <li id="newTournament">NEW TOURNAMENT</li>
+            <li id="deleteTournament">DELETE TOURNAMENT</li>
+            <li id="payment">PAYMENT</li>
+            <li id="blockUser">BLOCK USER</li>
+            <li id="changePassword">CHANGE PASSWORD</li>
+            <li id="updateRoomIdPassword">UPDATE ROOM ID AND PASSWORD</li>
+            <li id="usersJoined">USERS JOINED</li>
+        </ul>
+    </div>
+
+    <div id="newTournamentPopup" class="popup">
+        <div class="popup-content">
+            <h2>New Tournament</h2>
+            <label for="setGameMode">Game Mode:</label>
+            <select id="setGameMode">
+                <option value="solo">Solo</option>
+                <option value="duo">Duo</option>
+                <option value="squad">Squad</option>
+            </select>
+            <label for="setMinLevel">Minimum Level:</label>
+            <input type="number" id="setMinLevel">
+            <label for="setMaxLevel">Maximum Level:</label>
+            <input type="number" id="setMaxLevel">
+            <label for="setMode">Mode:</label>
+            <select id="setMode">
+                <option value="battleRoyal">Battle Royal</option>
+                <option value="clashSquad">Clash Squad</option>
+            </select>
+            <label for="setName">Tournament Name:</label>
+            <input type="text" id="setName">
+            <label for="setPrice">Price:</label>
+            <input type="text" id="setPrice">
+            <label for="setEntryFeeSolo">Entry Fee (Solo):</label>
+            <input type="text" id="setEntryFeeSolo">
+            <label for="setEntryFeeDuo">Entry Fee (Duo):</label>
+            <input type="text" id="setEntryFeeDuo">
+            <label for="setEntryFeeSquad">Entry Fee (Squad):</label>
+            <input type="text" id="setEntryFeeSquad">
+            <label for="setDevice">Device:</label>
+            <select id="setDevice">
+                <option value="mobile">Mobile</option>
+                <option value="pc">PC</option>
+                <option value="both">Both</option>
+            </select>
+            <button id="publishTournament">Publish Tournament</button>
+        </div>
+    </div>
+
+    <div id="blockUserPopup" class="popup">
+        <div class="popup-content">
+            <h2>Block User</h2>
+            <input type="text" id="blockUsername" placeholder="Username">
+            <button id="blockUserSubmit">Block</button>
+            <div class="banned-users">
+                <h3>Banned Users:</h3>
+                <p id="bannedUsersList"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="changePasswordPopup" class="popup">
+        <div class="popup-content">
+            <h2>Change User Password</h2>
+            <div id="usersList">
+                <!-- List of users will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="updateRoomIdPasswordPopup" class="popup">
+        <div class="popup-content">
+            <h2>Update Room ID and Password</h2>
+            <label for="chooseTournament">Choose Tournament:</label>
+            <select id="chooseTournament">
+                <!-- List of tournaments will be dynamically added here -->
+            </select>
+            <label for="roomId">Room ID:</label>
+            <input type="text" id="roomId">
+            <label for="roomPassword">Password:</label>
+            <input type="text" id="roomPassword">
+            <button id="updateRoomDetails">Update</button>
+        </div>
+    </div>
+
+    <div id="joinTournamentPopup" class="popup">
+        <div class="popup-content">
+            <h2>Join Tournament</h2>
+            <label for="joinGameMode">Game Mode:</label>
+            <select id="joinGameMode">
+                <option value="solo">Solo</option>
+                <option value="duo">Duo</option>
+                <option value="squad">Squad</option>
+            </select>
+            <div id="soloDetails" class="game-details">
+                <label for="soloGameName">Game Name:</label>
+                <input type="text" id="soloGameName">
+                <label for="soloGameUID">Game UID:</label>
+                <input type="text" id="soloGameUID">
+                <label for="soloLevel">Level:</label>
+                <input type="number" id="soloLevel">
+            </div>
+            <div id="duoDetails" class="game-details">
+                <label for="duoGameName1">Game Name Player 1:</label>
+                <input type="text" id="duoGameName1">
+                <label for="duoGameUID1">Game UID Player 1:</label>
+                <input type="text" id="duoGameUID1">
+                <label for="duoLevel1">Level Player 1:</label>
+                <input type="number" id="duoLevel1">
+                <label for="duoGameName2">Game Name Player 2:</label>
+                <input type="text" id="duoGameName2">
+                <label for="duoGameUID2">Game UID Player 2:</label>
+                <input type="text" id="duoGameUID2">
+                <label for="duoLevel2">Level Player 2:</label>
+                <input type="number" id="duoLevel2">
+            </div>
+            <div id="squadDetails" class="game-details">
+                <label for="squadGameName1">Game Name Player 1:</label>
+                <input type="text" id="squadGameName1">
+                <label for="squadGameUID1">Game UID Player 1:</label>
+                <input type="text" id="squadGameUID1">
+                <label for="squadLevel1">Level Player 1:</label>
+                <input type="number" id="squadLevel1">
+                <label for="squadGameName2">Game Name Player 2:</label>
+                <input type="text" id="squadGameName2">
+                <label for="squadGameUID2">Game UID Player 2:</label>
+                <input type="text" id="squadGameUID2">
+                <label for="squadLevel2">Level Player 2:</label>
+                <input type="number" id="squadLevel2">
+                <label for="squadGameName3">Game Name Player 3:</label>
+                <input type="text" id="squadGameName3">
+                <label for="squadGameUID3">Game UID Player 3:</label>
+                <input type="text" id="squadGameUID3">
+                <label for="squadLevel3">Level Player 3:</label>
+                <input type="number" id="squadLevel3">
+                <label for="squadGameName4">Game Name Player 4:</label>
+                <input type="text" id="squadGameName4">
+                <label for="squadGameUID4">Game UID Player 4:</label>
+                <input type="text" id="squadGameUID4">
+                <label for="squadLevel4">Level Player 4:</label>
+                <input type="number" id="squadLevel4">
+            </div>
+            <label for="joinDevice">Device:</label>
+            <select id="joinDevice">
+                <option value="pc">PC</option>
+                <option value="mobile">Mobile</option>
+                <option value="both">Both</option>
+            </select>
+            <label for="joinPaymentMethod">Payment Method:</label>
+            <select id="joinPaymentMethod">
+                <option value="gpay">GPay</option>
+                <option value="phonepe">PhonePe</option>
+                <option value="upi">UPI</option>
+                <option value="qr">QR</option>
+            </select>
+            <button id="joinTournamentSubmit">Join</button>
+        </div>
+    </div>
+
+    <div id="paymentPage" class="payment-page">
+        <h2>Payments</h2>
+        <div id="paymentList">
+            <!-- Payments list will be dynamically added here -->
+        </div>
+    </div>
+
+    <div id="homePage" class="home-page">
+        <h2>Tournaments</h2>
+        <div id="tournamentList">
+            <!-- Tournaments list will be dynamically added here -->
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
